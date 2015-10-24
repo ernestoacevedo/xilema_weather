@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :locations
   get 'home/index'
+  get 'home/get_location_url' => 'home#get_location_url'
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

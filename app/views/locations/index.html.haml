@@ -3,7 +3,7 @@
 %table
   %thead
     %tr
-      %th Adress
+      %th Address
       %th Latitude
       %th Longitude
       %th
@@ -13,7 +13,7 @@
   %tbody
     - @locations.each do |location|
       %tr
-        %td= location.adress
+        %td= location.address
         %td= location.latitude
         %td= location.longitude
         %td= link_to 'Show', location

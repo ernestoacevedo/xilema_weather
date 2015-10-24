@@ -23,7 +23,10 @@
               %span.caret
             %ul.dropdown-menu
               %li
-                %a{:href => "#"} Ubicación
+                - if current_user.location.present?
+                  = link_to 'Editar Ubicación', edit_location_path(current_user.location)
+                - else
+                  = link_to 'Registrar Ubicación', new_location_path
               %li
                 = link_to 'Editar Perfil', edit_user_registration_path
               %li.divider{:role => "separator"}

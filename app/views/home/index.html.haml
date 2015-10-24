@@ -1,3 +1,6 @@
-%h1 Hola
+- if current_user.location.present?
+  = current_user.location.address
+- else
+  No se ha definido su ubicación
 
 = link_to '' ,'#', class: 'icon', data: { icon: 'A' }

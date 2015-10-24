@@ -52,4 +52,5 @@ group :development, :test do
   gem 'awesome_print'
   gem 'pry-rails'
   gem 'quiet_assets'
+  gem 'react-rails'
 end
