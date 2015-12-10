@@ -1,34 +1,41 @@
-%nav.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "/"} WeatherMachine
-    #navbar.collapse.navbar-collapse
-      %ul.nav.navbar-nav.pull-right
+- unless current_user.nil?
+  %ul#dropdown_user.dropdown-content
+    %li
+      - if current_user.location.present?
+        = link_to 'Editar Ubicación', edit_location_path(current_user.location)
+      - else
+        = link_to 'Registrar Ubicación', new_location_path
+    %li
+      = link_to 'Editar Perfil', edit_user_registration_path
+    %li.divider
+    %li
+      = link_to 'Cerrar sesión', destroy_user_session_path, method: :delete
+%nav
+  .nav-wrapper
+    %a.brand-logo{:href => "/"}
+      %img{src: image_url('logo_white.png')}
+    %a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
+      %i.material-icons menu
+    %ul.right.hide-on-med-and-down
+      %li
+        %a{:href => "#"} Inicio
+      %li
+        %a{:href => "#"} Pronóstico
+      - unless current_user.nil?
         %li
-          %a{:href => "#"} Inicio
-        %li
-          %a{:href => "#"} Pronóstico
-        - unless current_user.nil?
-          %li.dropdown
-            %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              - unless current_user.name.nil?
-                = current_user.name
-              - else
-                = current_user.email
-              %span.caret
-            %ul.dropdown-menu
-              %li
-                - if current_user.location.present?
-                  = link_to 'Editar Ubicación', edit_location_path(current_user.location)
-                - else
-                  = link_to 'Registrar Ubicación', new_location_path
-              %li
-                = link_to 'Editar Perfil', edit_user_registration_path
-              %li.divider{:role => "separator"}
-              %li
-                = link_to 'Cerrar sesión', destroy_user_session_path, method: :delete
+          %a.dropdown-button{"data-activates" => "dropdown_user", :href => "#!"}
+            - unless current_user.name.nil?
+              = current_user.name
+            - else
+              = current_user.email
+            %i.material-icons.right
+              arrow_drop_down
+    %ul#mobile-demo.side-nav
+      %li
+        %a{:href => home_index_path} Inicio
+      %li
+        %a{:href => "#"} Reportes
+      %li
+        %a{:href => locations_path} Administrar ubicaciones
+      %li
+        = link_to 'Cerrar sesión', destroy_user_session_path, method: :delete

@@ -1,0 +1,19 @@
+@import "materialize/components/color";
+$primary-color: #1abc9c !default;
+@import "materialize";
+
+.icon{
+  text-decoration: none;
+  color: #f39c12;
+  font-size: 60px;
+}
+
+.icon:hover{
+  text-decoration: none;
+  color: #d35400;
+}
+
+.icon:before {
+	font-family: 'MeteoconsRegular';
+	content: attr(data-icon);
+}

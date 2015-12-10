@@ -1,6 +1,47 @@
-- if current_user.location.present?
-  = current_user.location.address
-- else
-  No se ha definido su ubicación
-
-= link_to '' ,'#', class: 'icon', data: { icon: 'A' }
+-# = link_to '' ,'#', class: 'icon', data: { icon: 'A' }
+.row
+.row
+  .col.s12.l5
+    - if current_user.location.present?
+      = current_user.location.address
+    - else
+      %h4 Molina
+      .row
+        .col.s6
+          Región:
+        .col.s6
+          7ma
+      .row
+        .col.s6
+          Sector:
+        .col.s6
+          3 Esquinas
+      .row
+        .col.s6
+          Predio:
+        .col.s6
+          Calvo y Cía.
+  .col.s12.l7
+    %h4 Pronóstico
+    %table.striped
+      %thead
+        %tr
+          %th{"data-field" => ""} Día
+          %th{"data-field" => ""} Máxima
+          %th{"data-field" => ""}
+      %tbody
+        %tr
+          %td Lunes
+          %td 18º
+          %td
+            %img{src: image_url('meteoicons/8.svg'), height: 30, width: 30 }
+        %tr
+          %td Martes
+          %td 20º
+          %td
+            %img{src: image_url('meteoicons/2.svg'), height: 30, width: 30 }
+        %tr
+          %td Miércoles
+          %td 14º
+          %td
+            %img{src: image_url('meteoicons/18.svg'), height: 30, width: 30 }
